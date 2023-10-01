@@ -6,21 +6,21 @@
 .globl main
 
 main:
-    move    $s7, $zero
-    li      $v0, 4          #Prompt
-    la		$a0, input_prompt
+    move    $s7, $zero      #register $s7 = 0
+    li      $v0, 4          #Prompt input string
+    la		$a0, input_prompt 
     syscall
 
-    li  $v0, 8
-    la  $a0, string
-    li  $a1, 40
+    li  $v0, 8               #read string 
+    la  $a0, string          #store read input string in $a0
+    li  $a1, 40     
     syscall
 
     move $t4, $zero
     li  $t5, 10
     li  $t7, 48
     la  $t0, string
-    addi  $t0, $t0, 1
+    addi  $t0, $t0, 1       #start at byte after "="
 
 start_loop:
     move $t6, $zero 
